@@ -53,6 +53,9 @@ metadata:
   name: connector
   namespace: pomelo
 spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
   replicas: 2
   template:
     metadata:
@@ -61,7 +64,7 @@ spec:
     spec:
       containers:
       - name: connector
-        image: tfgco/pomelo-gs-example:0.1
+        image: tfgco/pomelo-gs-example:0.2
         ports:
           - containerPort: 3010
           - containerPort: 3050
@@ -77,6 +80,9 @@ metadata:
   name: game
   namespace: pomelo
 spec:
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 1
   replicas: 2
   template:
     metadata:
@@ -86,7 +92,7 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - name: game
-        image: tfgco/pomelo-gs-example:0.1
+        image: tfgco/pomelo-gs-example:0.2
         ports:
           - containerPort: 3050
         env:
