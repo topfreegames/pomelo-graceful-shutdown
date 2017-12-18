@@ -7,7 +7,7 @@
 
 
 var pomelo = require('pomelo');
-var GracefulShutdown = require('../')
+var GracefulShutdown = require('pomelo-graceful-shutdown')
 
 /**
  * Init app for client.
@@ -21,7 +21,7 @@ app.configure('all', function(){
     {
       monitor : pomelo.monitors.redismonitor,
       redisNodes: {
-        host: "127.0.0.1",
+        host: process.env.POMELO_REDIS_HOST || "127.0.0.1",
         port: process.env.POMELO_REDIS_PORT || "7677"
       }
     })
