@@ -2,6 +2,10 @@ FROM mhart/alpine-node:latest
 
 EXPOSE 3010
 
+RUN apk update && \ 
+    apk add git python build-base && \
+    rm -rf /var/cache/apk/*
+
 RUN mkdir -p /var/apps/pomelo-graceful-shutdown-example
 WORKDIR /var/apps/pomelo-graceful-shutdown-example
 ADD package.json /var/apps/pomelo-graceful-shutdown-example/package.json
