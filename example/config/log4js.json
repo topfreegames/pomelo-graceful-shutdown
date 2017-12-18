@@ -1,0 +1,10 @@
+{
+  "appenders": {
+    "out": {"type": "stdout"}
+  },
+  "categories": {
+    "default": {"appenders": ["out"], "level": "info"}
+  },
+  "replaceConsole": true,
+  "rawMessage": true
+}

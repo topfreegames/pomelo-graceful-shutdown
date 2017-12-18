@@ -1,0 +1,29 @@
+{
+  "name": "pomelo-graceful-shutdown",
+  "version": "0.1.0",
+  "description": "A pomelo plugin that handles graceful shutdown logic",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./tests/integration ./tests/unit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/topfreegames/pomelo-graceful-shutdown.git"
+  },
+  "keywords": [
+    "pomelo",
+    "graceful",
+    "shutdown"
+  ],
+  "author": "Felipe Cavalcanti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/topfreegames/pomelo-graceful-shutdown/issues"
+  },
+  "homepage": "https://github.com/topfreegames/pomelo-graceful-shutdown#readme",
+  "dependencies": {
+    "pomelo": "topfreegames/pomelo-graceful-shutdown#master"
+  ,
+  "devDependencies": {
+  }
+}

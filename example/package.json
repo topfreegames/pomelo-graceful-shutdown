@@ -1,0 +1,9 @@
+{
+    "name": "example",
+    "version": "0.0.1",
+    "private": false,
+    "dependencies": {
+        "pomelo": "topfreegames/pomelo#master",
+        "sleep": "^5.1.1"
+    }
+}
