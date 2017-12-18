@@ -16,7 +16,7 @@ var app = pomelo.createApp();
 app.set('name', 'gsd_example');
 
 // configure monitor
-app.configure('production|development', function(){
+app.configure('all', function(){
   app.set('monitorConfig',
     {
       monitor : pomelo.monitors.redismonitor,
@@ -28,30 +28,36 @@ app.configure('production|development', function(){
 });
 
 // app configuration
-app.configure('production|development', 'connector', function(){
+app.configure('all', 'game', function(){
   app.numRooms = 0;
+  app.use(GracefulShutdown, {
+    gracefulShutdown: {
+      checks: [
+        () => {
+          if (app.numRooms > 0) {
+            return false;
+          }
+          return true
+        }
+      ],
+      signals: ['SIGTERM'],
+      before: () => {
+        console.log("before")
+      },
+      shouldExit: false,
+      timeout: 60,
+    },
+  });
+});
+
+// app configuration
+app.configure('all', 'connector', function(){
   app.set('connectorConfig',
     {
       connector : pomelo.connectors.hybridconnector,
       heartbeat : 3,
       useDict : true,
       useProtobuf : true
-    });
-    app.use(GracefulShutdown, {
-      gracefulShutdown: {
-        checks: [
-          () => {
-            if (app.numRooms > 0) {
-              return false;
-            }
-            return true
-          }
-        ],
-        signals: ['SIGTERM'],
-        before: () => {
-          console.log("before")
-        },
-      },
     });
 });
 
