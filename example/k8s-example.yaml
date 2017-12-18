@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: pomelo
+  labels:
+    name: redis
+  name: redis
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    app: redis
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: pomelo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:4
+        command:
+          - redis-server 
+        ports:
+          - containerPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: pomelo
+  labels:
+    name: connector
+  name: connector
+spec:
+  ports:
+    - port: 3010
+      targetPort: 3010
+  selector:
+    app: connector
+  type: NodePort
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: connector
+  namespace: pomelo
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: connector
+    spec:
+      containers:
+      - name: connector
+        image: tfgco/pomelo-gs-example:0.1
+        ports:
+          - containerPort: 3010
+          - containerPort: 3050
+        env:
+          - name: POMELO_REDIS_HOST
+            value: redis
+          - name: POMELO_REDIS_PORT
+            value: "6379"
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: game
+  namespace: pomelo
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: game
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: game
+        image: tfgco/pomelo-gs-example:0.1
+        ports:
+          - containerPort: 3050
+        env:
+          - name: POMELO_REDIS_HOST
+            value: redis
+          - name: POMELO_REDIS_PORT
+            value: "6379"
+          - name: FRONTEND
+            value: "false"
+          - name: SERVER_TYPE
+            value: "game"

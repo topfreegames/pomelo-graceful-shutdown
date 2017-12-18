@@ -10,7 +10,7 @@ SERVER_TYPE=${SERVER_TYPE-connector}
 NAME=${NAME-$SERVER_TYPE-$(hostname)}
 if $FRONTEND
 then
-  node app.js host=$HOST port=$PORT clientPort=$CLIENT_PORT frontend=$FRONTEND serverType=$SERVER_TYPE name=$NAME clientHost=$FULL_DOMAIN
+  exec node app.js host=$HOST port=$PORT clientPort=$CLIENT_PORT frontend=$FRONTEND serverType=$SERVER_TYPE name=$NAME clientHost=$FULL_DOMAIN
 else
-  node app.js host=$HOST port=$PORT frontend=$FRONTEND serverType=$SERVER_TYPE name=$NAME 
+  exec node app.js host=$HOST port=$PORT frontend=$FRONTEND serverType=$SERVER_TYPE name=$NAME 
 fi
