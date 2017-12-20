@@ -1,9 +1,9 @@
-# pernilongo
-# https://github.com/topfreegames/pernilongo
+# pomelo graceful shutdown
+# https://github.com/topfreegames/pomelo-graceful-shutdown
 #
 # Licensed under the MIT license:
 # http://www.opensource.org/licenses/mit-license
-# Copyright © 2016 Top Free Games <backend@tfgco.com>
+# Copyright © 2017 Top Free Games <backend@tfgco.com>
 
 setup:
 	@npm install && cd example && npm install
