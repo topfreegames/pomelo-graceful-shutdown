@@ -18,10 +18,7 @@ app.configure('all', 'connector', function(){
     gracefulShutdown: {
       checks: [
         () => {
-          if (app.numRooms > 0) {
-            return false;
-          }
-          return true
+          return app.numRooms <= 0;
         }
       ],
       signals: ['SIGTERM'],
