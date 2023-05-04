@@ -1,6 +1,6 @@
 {
   "name": "pomelo-graceful-shutdown",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "description": "A pomelo plugin that handles graceful shutdown logic",
   "main": "index.js",
   "scripts": {},
@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/topfreegames/pomelo-graceful-shutdown#readme",
   "dependencies": {
-    "pomelo": "topfreegames/pomelo#3.2.0"
+    "pomelo": "topfreegames/pomelo#3.4.0"
   }
 }
