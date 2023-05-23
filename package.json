@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/topfreegames/pomelo-graceful-shutdown#readme",
   "dependencies": {
-    "pomelo": "topfreegames/pomelo#3.4.0"
+    "pomelo": "topfreegames/pomelo#3.4.1"
   }
 }
