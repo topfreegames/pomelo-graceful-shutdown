@@ -1,6 +1,6 @@
 {
   "name": "pomelo-graceful-shutdown",
-  "version": "0.2.17",
+  "version": "0.2.18",
   "description": "A pomelo plugin that handles graceful shutdown logic",
   "main": "index.js",
   "scripts": {},
